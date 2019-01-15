@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.CheckGradeMapper" >
+  <resultMap id="BaseResultMap" type="dataobject.CheckGrade" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="scale" property="scale" jdbcType="TINYINT" />
+    <result column="trade" property="trade" jdbcType="VARCHAR" />
+    <result column="questionnaire" property="questionnaire" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="DECIMAL" />
+    <result column="evaluation_time" property="evaluationTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="step" property="step" jdbcType="TINYINT" />
+    <result column="mark1" property="mark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <trim prefix="where" prefixOverrides="and|or" >
+      <if test="condition.companyName != null" >
+         and company_name = #{condition.companyName}
+      </if>
+      <if test="condition.status != null" >
+         and status = #{condition.status}
+      </if>
+      <if test="condition.scale != null" >
+         and scale = #{condition.scale}
+      </if>
+      <if test="condition.trade != null" >
+         and trade = #{condition.trade}
+      </if>
+      <if test="condition.questionnaire != null" >
+         and questionnaire = #{condition.questionnaire}
+      </if>
+      <if test="condition.score != null" >
+         and score = #{condition.score}
+      </if>
+      <if test="condition.evaluationTime != null" >
+         and evaluation_time = #{condition.evaluationTime}
+      </if>
+      <if test="condition.createTime != null" >
+         and create_time = #{condition.createTime}
+      </if>
+      <if test="condition.step != null" >
+         and step = #{condition.step}
+      </if>
+      <if test="condition.mark1 != null" >
+         and mark1 = #{condition.mark1}
+      </if>
+    </trim>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, company_name, status, scale, trade, questionnaire, score, evaluation_time, create_time, 
+    step, mark1
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="dataobject.Criteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from check_grade
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="common.Mysql_Pagination_Limit" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from check_grade
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from check_grade
+    where id = #{id}
+  </delete>
+  <delete id="deleteByExample" parameterType="dataobject.Criteria" >
+    delete from check_grade
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="dataobject.CheckGrade" >
+    insert into check_grade (id, company_name, status, scale, trade, questionnaire, score, 
+      evaluation_time, create_time, step, mark1)
+    values (#{id}, #{companyName}, #{status}, #{scale}, #{trade}, #{questionnaire}, #{score}, 
+      #{evaluationTime}, #{createTime}, #{step}, #{mark1})
+  </insert>
+  <insert id="insertSelective" parameterType="dataobject.CheckGrade" >
+    insert into check_grade
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="scale != null" >
+        scale,
+      </if>
+      <if test="trade != null" >
+        trade,
+      </if>
+      <if test="questionnaire != null" >
+        questionnaire,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="evaluationTime != null" >
+        evaluation_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="step != null" >
+        step,
+      </if>
+      <if test="mark1 != null" >
+        mark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="companyName != null" >
+        #{companyName},
+      </if>
+      <if test="status != null" >
+        #{status},
+      </if>
+      <if test="scale != null" >
+        #{scale},
+      </if>
+      <if test="trade != null" >
+        #{trade},
+      </if>
+      <if test="questionnaire != null" >
+        #{questionnaire},
+      </if>
+      <if test="score != null" >
+        #{score},
+      </if>
+      <if test="evaluationTime != null" >
+        #{evaluationTime},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="step != null" >
+        #{step},
+      </if>
+      <if test="mark1 != null" >
+        #{mark1},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="dataobject.Criteria" resultType="java.lang.Integer" >
+    select count(*) from check_grade
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update check_grade
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id},
+      </if>
+      <if test="record.companyName != null" >
+        company_name = #{record.companyName},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status},
+      </if>
+      <if test="record.scale != null" >
+        scale = #{record.scale},
+      </if>
+      <if test="record.trade != null" >
+        trade = #{record.trade},
+      </if>
+      <if test="record.questionnaire != null" >
+        questionnaire = #{record.questionnaire},
+      </if>
+      <if test="record.score != null" >
+        score = #{record.score},
+      </if>
+      <if test="record.evaluationTime != null" >
+        evaluation_time = #{record.evaluationTime},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime},
+      </if>
+      <if test="record.step != null" >
+        step = #{record.step},
+      </if>
+      <if test="record.mark1 != null" >
+        mark1 = #{record.mark1},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update check_grade
+    set id = #{record.id},
+      company_name = #{record.companyName},
+      status = #{record.status},
+      scale = #{record.scale},
+      trade = #{record.trade},
+      questionnaire = #{record.questionnaire},
+      score = #{record.score},
+      evaluation_time = #{record.evaluationTime},
+      create_time = #{record.createTime},
+      step = #{record.step},
+      mark1 = #{record.mark1}
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="dataobject.CheckGrade" >
+    update check_grade
+    <set >
+      <if test="companyName != null" >
+        company_name = #{companyName},
+      </if>
+      <if test="status != null" >
+        status = #{status},
+      </if>
+      <if test="scale != null" >
+        scale = #{scale},
+      </if>
+      <if test="trade != null" >
+        trade = #{trade},
+      </if>
+      <if test="questionnaire != null" >
+        questionnaire = #{questionnaire},
+      </if>
+      <if test="score != null" >
+        score = #{score},
+      </if>
+      <if test="evaluationTime != null" >
+        evaluation_time = #{evaluationTime},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="step != null" >
+        step = #{step},
+      </if>
+      <if test="mark1 != null" >
+        mark1 = #{mark1},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dataobject.CheckGrade" >
+    update check_grade
+    set company_name = #{companyName},
+      status = #{status},
+      scale = #{scale},
+      trade = #{trade},
+      questionnaire = #{questionnaire},
+      score = #{score},
+      evaluation_time = #{evaluationTime},
+      create_time = #{createTime},
+      step = #{step},
+      mark1 = #{mark1}
+    where id = #{id}
+  </update>
+</mapper>

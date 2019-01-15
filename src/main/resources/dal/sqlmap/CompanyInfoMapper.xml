@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.CompanyInfoMapper" >
+  <resultMap id="BaseResultMap" type="dataobject.CompanyInfo" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="linkman" property="linkman" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="mobilephone" property="mobilephone" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="trade" property="trade" jdbcType="VARCHAR" />
+    <result column="scale" property="scale" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="mark1" property="mark1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <trim prefix="where" prefixOverrides="and|or" >
+      <if test="condition.companyName != null" >
+         and company_name = #{condition.companyName}
+      </if>
+      <if test="condition.userName != null" >
+         and user_name = #{condition.userName}
+      </if>
+      <if test="condition.linkman != null" >
+         and linkman = #{condition.linkman}
+      </if>
+      <if test="condition.email != null" >
+         and email = #{condition.email}
+      </if>
+      <if test="condition.telephone != null" >
+         and telephone = #{condition.telephone}
+      </if>
+      <if test="condition.mobilephone != null" >
+         and mobilephone = #{condition.mobilephone}
+      </if>
+      <if test="condition.status != null" >
+         and status = #{condition.status}
+      </if>
+      <if test="condition.area != null" >
+         and area = #{condition.area}
+      </if>
+      <if test="condition.trade != null" >
+         and trade = #{condition.trade}
+      </if>
+      <if test="condition.scale != null" >
+         and scale = #{condition.scale}
+      </if>
+      <if test="condition.createTime != null" >
+         and create_time = #{condition.createTime}
+      </if>
+      <if test="condition.mark1 != null" >
+         and mark1 = #{condition.mark1}
+      </if>
+    </trim>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, company_name, user_name, linkman, email, telephone, mobilephone, status, area, 
+    trade, scale, create_time, mark1
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="dataobject.Criteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from company_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="common.Mysql_Pagination_Limit" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from company_info
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from company_info
+    where id = #{id}
+  </delete>
+  <delete id="deleteByExample" parameterType="dataobject.Criteria" >
+    delete from company_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="dataobject.CompanyInfo" >
+    insert into company_info (id, company_name, user_name, linkman, email, telephone, mobilephone, 
+      status, area, trade, scale, create_time, mark1)
+    values (#{id}, #{companyName}, #{userName}, #{linkman}, #{email}, #{telephone}, #{mobilephone}, 
+      #{status}, #{area}, #{trade}, #{scale}, #{createTime}, #{mark1})
+  </insert>
+  <insert id="insertSelective" parameterType="dataobject.CompanyInfo" >
+    insert into company_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="linkman != null" >
+        linkman,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="mobilephone != null" >
+        mobilephone,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="trade != null" >
+        trade,
+      </if>
+      <if test="scale != null" >
+        scale,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="mark1 != null" >
+        mark1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="companyName != null" >
+        #{companyName},
+      </if>
+      <if test="userName != null" >
+        #{userName},
+      </if>
+      <if test="linkman != null" >
+        #{linkman},
+      </if>
+      <if test="email != null" >
+        #{email},
+      </if>
+      <if test="telephone != null" >
+        #{telephone},
+      </if>
+      <if test="mobilephone != null" >
+        #{mobilephone},
+      </if>
+      <if test="status != null" >
+        #{status},
+      </if>
+      <if test="area != null" >
+        #{area},
+      </if>
+      <if test="trade != null" >
+        #{trade},
+      </if>
+      <if test="scale != null" >
+        #{scale},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="mark1 != null" >
+        #{mark1},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="dataobject.Criteria" resultType="java.lang.Integer" >
+    select count(*) from company_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update company_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id},
+      </if>
+      <if test="record.companyName != null" >
+        company_name = #{record.companyName},
+      </if>
+      <if test="record.userName != null" >
+        user_name = #{record.userName},
+      </if>
+      <if test="record.linkman != null" >
+        linkman = #{record.linkman},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email},
+      </if>
+      <if test="record.telephone != null" >
+        telephone = #{record.telephone},
+      </if>
+      <if test="record.mobilephone != null" >
+        mobilephone = #{record.mobilephone},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status},
+      </if>
+      <if test="record.area != null" >
+        area = #{record.area},
+      </if>
+      <if test="record.trade != null" >
+        trade = #{record.trade},
+      </if>
+      <if test="record.scale != null" >
+        scale = #{record.scale},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime},
+      </if>
+      <if test="record.mark1 != null" >
+        mark1 = #{record.mark1},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update company_info
+    set id = #{record.id},
+      company_name = #{record.companyName},
+      user_name = #{record.userName},
+      linkman = #{record.linkman},
+      email = #{record.email},
+      telephone = #{record.telephone},
+      mobilephone = #{record.mobilephone},
+      status = #{record.status},
+      area = #{record.area},
+      trade = #{record.trade},
+      scale = #{record.scale},
+      create_time = #{record.createTime},
+      mark1 = #{record.mark1}
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="dataobject.CompanyInfo" >
+    update company_info
+    <set >
+      <if test="companyName != null" >
+        company_name = #{companyName},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName},
+      </if>
+      <if test="linkman != null" >
+        linkman = #{linkman},
+      </if>
+      <if test="email != null" >
+        email = #{email},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone},
+      </if>
+      <if test="mobilephone != null" >
+        mobilephone = #{mobilephone},
+      </if>
+      <if test="status != null" >
+        status = #{status},
+      </if>
+      <if test="area != null" >
+        area = #{area},
+      </if>
+      <if test="trade != null" >
+        trade = #{trade},
+      </if>
+      <if test="scale != null" >
+        scale = #{scale},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="mark1 != null" >
+        mark1 = #{mark1},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dataobject.CompanyInfo" >
+    update company_info
+    set company_name = #{companyName},
+      user_name = #{userName},
+      linkman = #{linkman},
+      email = #{email},
+      telephone = #{telephone},
+      mobilephone = #{mobilephone},
+      status = #{status},
+      area = #{area},
+      trade = #{trade},
+      scale = #{scale},
+      create_time = #{createTime},
+      mark1 = #{mark1}
+    where id = #{id}
+  </update>
+</mapper>
